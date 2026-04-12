@@ -206,8 +206,10 @@ const WiFiSettings = () => {
 
     return (
         <Form>
-            <PageTitle>Configure WiFi</PageTitle>
-            <h4 style={{ marginTop: "24px" }}>Current WiFi connection</h4>
+            <PageTitle>{t("panel.configuration.wifi-configure")}</PageTitle>
+            <h4 style={{ marginTop: "24px" }}>
+                {t("panel.configuration.wifi-current-connection")}
+            </h4>
             <>
                 <Row>
                     {!isSaving && (
@@ -221,30 +223,35 @@ const WiFiSettings = () => {
                 </Row>
             </>
 
-            <h4 style={{ marginTop: "24px" }}>General settings</h4>
+            <h4 style={{ marginTop: "24px" }}>
+                {t("panel.configuration.wifi-general-settings")}
+            </h4>
             <TextField
-                label="Hostname"
+                label={t("panel.configuration.wifi-hostname")}
                 disabled={isSaving || isLoading}
                 value={hostname}
-                placeholder="Hostname"
+                placeholder={t("panel.configuration.wifi-hostname")}
                 setValue={(value) => setHostname("" + value)}
             />
 
             <SelectField
-                label="WiFi mode"
+                label={t("panel.configuration.wifi-mode")}
                 disabled={isSaving || isLoading}
                 options={[
-                    { name: "Off", value: "Off" },
                     {
-                        name: "Client station (fallback to access point)",
+                        name: t("panel.configuration.wifi-mode-off"),
+                        value: "Off"
+                    },
+                    {
+                        name: t("panel.configuration.wifi-mode-sta-ap"),
                         value: "STA>AP"
                     },
                     {
-                        name: "Client station",
+                        name: t("panel.configuration.wifi-mode-sta"),
                         value: "STA"
                     },
                     {
-                        name: "Access point",
+                        name: t("panel.configuration.wifi-mode-ap"),
                         value: "AP"
                     }
                 ]}
@@ -255,7 +262,7 @@ const WiFiSettings = () => {
             {(wifiMode === "STA>AP" || wifiMode === "STA") && (
                 <>
                     <h4 style={{ marginTop: "24px" }}>
-                        Client station settings
+                        {t("panel.configuration.wifi-client-settings")}
                     </h4>
                     {isLoading && loadingType == "access points" && (
                         <AlertMessage variant="info">
@@ -265,7 +272,7 @@ const WiFiSettings = () => {
 
                     <Form.Group as={Row} className="mb-3">
                         <Form.Label column sm="4">
-                            SSID
+                            {t("panel.configuration.wifi-ssid")}
                         </Form.Label>
                         <Col>
                             <InputGroup>
@@ -336,21 +343,23 @@ const WiFiSettings = () => {
                     </Form.Group>
 
                     <TextField
-                        label="Password"
+                        label={t("panel.configuration.wifi-password")}
                         disabled={isSaving || isLoading}
                         value={stationPassword}
-                        placeholder="Password"
+                        placeholder={t("panel.configuration.wifi-password")}
                         setValue={(value) => setStationPassword("" + value)}
                         type="password"
                         validationMessage={
                             (stationPassword ?? "").length < 8
-                                ? "Password must be at least 8 characters"
+                                ? t(
+                                      "panel.configuration.wifi-password-min-length"
+                                  )
                                 : undefined
                         }
                     />
 
                     <SelectField
-                        label="Min security"
+                        label={t("panel.configuration.wifi-min-security")}
                         disabled={isSaving || isLoading}
                         options={[
                             { name: "OPEN", value: "OPEN" },
@@ -371,7 +380,7 @@ const WiFiSettings = () => {
                     />
 
                     <SelectField
-                        label="IP mode"
+                        label={t("panel.configuration.wifi-ip-mode")}
                         disabled={isSaving || isLoading}
                         options={[
                             { name: "Static", value: "Static" },
@@ -384,30 +393,38 @@ const WiFiSettings = () => {
                     {stationIpMode === "Static" && (
                         <>
                             <h4 style={{ marginTop: "24px" }}>
-                                Static IP settings
+                                {t(
+                                    "panel.configuration.wifi-static-ip-settings"
+                                )}
                             </h4>
 
                             <TextField
-                                label="IP Address"
+                                label={t("panel.configuration.wifi-ip-address")}
                                 disabled={isSaving || isLoading}
                                 value={stationIP}
-                                placeholder="IP"
+                                placeholder={t(
+                                    "panel.configuration.wifi-ip-address"
+                                )}
                                 setValue={(value) => setStationIP("" + value)}
                             />
                             <TextField
-                                label="Gateway"
+                                label={t("panel.configuration.wifi-gateway")}
                                 disabled={isSaving || isLoading}
                                 value={stationGateway}
-                                placeholder="Gateway"
+                                placeholder={t(
+                                    "panel.configuration.wifi-gateway"
+                                )}
                                 setValue={(value) =>
                                     setStationGateway("" + value)
                                 }
                             />
                             <TextField
-                                label="Netmask"
+                                label={t("panel.configuration.wifi-netmask")}
                                 disabled={isSaving || isLoading}
                                 value={stationNetmask}
-                                placeholder="Netmask"
+                                placeholder={t(
+                                    "panel.configuration.wifi-netmask"
+                                )}
                                 setValue={(value) =>
                                     setStationNetmask("" + value)
                                 }
@@ -419,33 +436,37 @@ const WiFiSettings = () => {
 
             {(wifiMode === "STA>AP" || wifiMode === "AP") && (
                 <>
-                    <h4 style={{ marginTop: "24px" }}>Access point settings</h4>
+                    <h4 style={{ marginTop: "24px" }}>
+                        {t("panel.configuration.wifi-ap-settings")}
+                    </h4>
                     <TextField
-                        label="SSID"
+                        label={t("panel.configuration.wifi-ssid")}
                         disabled={isSaving || isLoading}
                         value={apSSID}
-                        placeholder="AP SSID"
+                        placeholder={t("panel.configuration.wifi-ssid")}
                         setValue={(value) => setApSSID("" + value)}
                     />
 
                     <TextField
-                        label="Password"
+                        label={t("panel.configuration.wifi-password")}
                         disabled={isSaving || isLoading}
                         value={apPassword}
-                        placeholder="Password"
+                        placeholder={t("panel.configuration.wifi-password")}
                         setValue={(value) => setApPassword("" + value)}
                         type="password"
                         validationMessage={
                             (apPassword ?? "").length < 8
-                                ? "Password must be at least 8 characters"
+                                ? t(
+                                      "panel.configuration.wifi-password-min-length"
+                                  )
                                 : undefined
                         }
                     />
 
                     <SelectField
-                        label="Country"
+                        label={t("panel.configuration.wifi-country")}
                         disabled={isSaving || isLoading}
-                        placeholder="Country"
+                        placeholder={t("panel.configuration.wifi-country")}
                         value={apCountry}
                         setValue={(value) => setApCountry("" + value)}
                         options={[
@@ -497,17 +518,17 @@ const WiFiSettings = () => {
                         ]}
                     />
                     <TextField
-                        label="Channel"
+                        label={t("panel.configuration.wifi-channel")}
                         disabled={isSaving || isLoading}
                         value={apChannel}
-                        placeholder="Channel"
+                        placeholder={t("panel.configuration.wifi-channel")}
                         setValue={(value) => setApChannel("" + value)}
                     />
                     <TextField
-                        label="IP"
+                        label={t("panel.configuration.wifi-ip-address")}
                         disabled={isSaving || isLoading}
                         value={apIP}
-                        placeholder="IP"
+                        placeholder={t("panel.configuration.wifi-ip-address")}
                         setValue={(value) => setApIP("" + value)}
                     />
                 </>
@@ -545,7 +566,8 @@ const WiFiSettings = () => {
                     )}
                     {!isSaving && (
                         <>
-                            <FontAwesomeIcon icon={faSave as Icon} /> Save{" "}
+                            <FontAwesomeIcon icon={faSave as Icon} />{" "}
+                            {t("panel.configuration.wifi-save")}{" "}
                         </>
                     )}
                 </Button>
