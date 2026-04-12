@@ -1,0 +1,18 @@
+[Unit]
+Description=Fluid Installer Web Server
+After=network.target
+
+[Service]
+Type=simple
+User=xg
+WorkingDirectory=/home/xg/fluid-installer
+ExecStart=/usr/local/bin/serve dist -l 1234 --ssl-cert /home/xg/fluid-installer/ssl/cert.pem --ssl-key /home/xg/fluid-installer/ssl/key.pem
+Restart=always
+RestartSec=10
+Environment=NODE_ENV=production
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -124,7 +124,7 @@ const StackTraceDecoder = () => {
         setIsLoadingReleases(true);
         try {
             const resp = await fetch(
-                "https://api.github.com/repos/bdring/FluidNC/releases?per_page=30"
+                "https://api.github.com/repos/kxgx/FluidNC/releases?per_page=30"
             );
             if (!resp.ok) {
                 throw new Error(`HTTP ${resp.status}`);

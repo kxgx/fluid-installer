@@ -3,10 +3,10 @@ export type GithubReleaseAsset = {
     name: string;
 };
 export const FLUIDNC_RELEASES_API =
-    "https://api.github.com/repos/bdring/FluidNC/releases";
+    "https://api.github.com/repos/kxgx/FluidNC/releases";
 
 export const FLUIDNC_RESOURCES_BASE_URL =
-    "https://raw.githubusercontent.com/bdring/fluidnc-releases/main/releases";
+    "https://raw.githubusercontent.com/kxgx/FluidNC/main/releases";
 
 export const FLUIDDIAL_RELEASES_API =
     "https://api.github.com/repos/bdring/FluidDial/releases";

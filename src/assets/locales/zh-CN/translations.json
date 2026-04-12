@@ -1,105 +1,105 @@
 {
     "header": {
-        "documentation": "帮助文档",
+        "documentation": "文档",
         "translate": "添加翻译"
     },
     "footer": {
-        "documentation": "帮助文档"
+        "documentation": "文档"
     },
     "page": {
         "select-device": {
             "fluidnc": "如果您想要安装、升级或配置您的 FluidNC 控制器，请使用此选项。",
-            "fluiddial": "如果您想安装或升级您的 FluidDial (CYD 或 M5Dial) 等待，请使用此选项。",
-            "continue": "点击继续"
+            "fluiddial": "如果您想安装或升级您的 FluidDial (CYD 或 M5Dial)  pendant，请使用此选项。",
+            "continue": "继续"
         },
         "connection": {
-            "title": "FluidNC 在线安装配置引导",
-            "description": "此工具将易于在设备上安装或升级 FluidNC 。请将设备连接并按 Connect 继续。",
+            "title": "FluidNC Web 安装器",
+            "description": "此工具将使您在控制器上安装或升级 FluidNC 变得简单。插入控制器并按连接继续。",
             "connect": "连接",
             "connecting": "连接中",
-            "establishing-connection": "建立到控制器的连接"
+            "establishing-connection": "正在建立与控制器的连接"
         },
         "home": {
-            "description": "您已连接到设备，请可以进行下面的操作",
+            "description": "您已连接到设备，请选择以下操作",
             "error-while-booting": "启动时发生错误，可能是由于配置无效。",
-            "show-details": "点击这里查看详情"
+            "show-details": "点击此处查看详情"
         },
         "file-browser": {
-            "title": "内置文件",
-            "loading": "加载中",
-            "downloading": "下载中",
+            "title": "文件浏览器",
+            "loading": "加载中...",
+            "downloading": "下载中...",
             "uploading": "上传中",
-            "config-missing": "缺少配置文件“{{configFilename}}”，是否要创建它？",
+            "config-missing": "配置文件 \"{{configFilename}}\" 缺失，是否创建？",
             "create-config": "创建配置",
             "create-new-config": "创建新配置",
             "upload": "上传",
             "active-config": "当前配置",
-            "select-config": "选择配置文件",
-            "select-as-config": "选择为配置文件",
+            "select-config": "选择配置",
+            "select-as-config": "设为配置文件",
             "edit": "编辑",
             "delete": "删除",
             "download": "下载"
         },
         "terminal": {
             "title": "终端",
-            "restarting": "重新启动设备",
-            "restart": "重新启动",
-            "restart-description": "通过设置 DTR/RTS 在控制器上进行硬重置",
+            "restarting": "重启控制器...",
+            "restart": "重启",
+            "restart-description": "通过设置 DTR/RTS 对控制器进行硬重置",
             "reset": "重置",
-            "reset-description": "重置控制器为 0x18 命令",
+            "reset-description": "使用 0x18 命令重置控制器",
             "unlock": "解锁",
-            "unlock-description": "用$X解锁设备",
+            "unlock-description": "使用 $X 解锁控制器",
             "status": "状态",
-            "status-description": "获得设备状态",
-            "startup": "获得初始化设备状态",
-            "startup-description": "获取初始化设备状态日志",
+            "status-description": "获取控制器状态",
+            "startup": "启动消息",
+            "startup-description": "获取启动日志消息",
             "version": "版本",
             "version-description": "获取固件版本"
         },
         "not-found": {
-            "title": "无法找到页面",
-            "go-back-home": "返回主页"
+            "title": "页面未找到",
+            "go-back-home": "返回首页"
         },
         "fluiddial": {
             "connection": {
-                "title": "FluidDial 在线安装程序",
-                "description": "此工具将易于在设备上安装或升级 FluidNC 。请将设备连接并按 Connect 继续。"
+                "title": "FluidDial Web 安装器",
+                "description": "此工具将使您在 pendant 上安装或升级 FluidDial 变得简单。插入 pendant 并按连接继续。"
             }
         }
     },
     "panel": {
         "navigation": {
-            "home": "归位",
+            "home": "主页",
             "install": "安装",
             "terminal": "终端",
-            "file-browser": "内置文件",
-            "wifi": "配置WiFi网络",
-            "calibrate": "检查引脚",
-            "stacktrace-decoder": "Decode Stack Trace",
+            "file-browser": "文件浏览器",
+            "wifi": "WiFi",
+            "calibrate": "校准",
+            "stacktrace-decoder": "解码堆栈跟踪",
             "restart": "重启",
             "disconnect": "断开连接"
         },
         "firmware": {
             "install": "安装",
-            "install-description": "请选择你想要在控制器上安装的固件版本。",
-            "loading": "加载中…",
-            "install-custom-image": "安装自定义图像...",
-            "show-prereleases": "显示预发布",
+            "install-description": "选择要在控制器上安装的固件。",
+            "loading": "加载中...",
+            "install-custom-image": "安装自定义镜像...",
+            "show-prereleases": "显示预发布版本",
             "fetching": "获取中"
         },
         "progress": {
             "title": "安装中",
-            "downloading": "正在下载包文件...",
-            "validating": "正在校验图像...",
-            "flashing": "正在安装软件包..."
+            "downloading": "正在下载包...",
+            "validating": "正在验证镜像...",
+            "flashing": "正在安装包到设备..."
         },
         "bootloader": {
-            "waiting": "正在等待控制器进入bootloader",
-            "not-active": "引导加载器未激活 - 请按下 BOOT 开关"
+            "waiting": "等待控制器进入 bootloader...",
+            "not-active": "Bootloader 未激活 - 尝试按住 BOOT 按钮"
         },
         "unsupported": {
             "title": "浏览器不支持",
-            "description": "您当前的浏览器不支持，请使用 Chrome、Edge 或 Opera 代替。"
+            "description": "您当前的浏览器不受支持，请使用 Chrome、Edge 或 Opera"
         }
     },
     "component": {
@@ -124,50 +124,50 @@
             "error": "错误!",
             "close": "关闭",
             "confirm-installation": "确认安装",
-            "confirm-installation-description": "将擦除设备并安装{{release}}版本的固件",
-            "not": "不",
+            "confirm-installation-description": "这将在控制器上安装固件 \"{{release}}\"。{{not}} 会擦除控制器。",
+            "not": "不会",
             "installation-speed": "安装速度",
-            "installation-speed-help": "一些控制器需要以较低的速度安装。如果你遇到问题，你可以尝试降低速度。",
+            "installation-speed-help": "某些控制器需要以较低速度安装。如果遇到问题，可以尝试降低速度。",
             "install": "安装",
             "cancel": "取消",
-            "select-image": "选择图像",
-            "select-image-description1": "如果您手动下载了一个包，您可以从这里刷入图像。",
-            "select-image-description2": "选择要刷入控制器的固件.bin 文件。",
-            "select-image-button": "选择固件图像"
+            "select-image": "选择镜像",
+            "select-image-description1": "如果您手动下载了包，可以从此处刷入镜像。",
+            "select-image-description2": "选择要刷入控制器的 firmware.bin 文件。",
+            "select-image-button": "选择固件镜像"
         },
         "lost-connection": {
-            "description": "无法连接到控制器",
+            "description": "与控制器失去连接",
             "close": "关闭"
         }
     },
     "card": {
         "install": {
-            "upgrade-description": "升级FluidNC 从",
-            "install-description": "控制器似乎没有安装 FluidNC ，你想要安装它吗？",
+            "upgrade-description": "升级 FluidNC，从",
+            "install-description": "控制器似乎未安装 FluidNC，是否安装？",
             "upgrade-button": "升级 FluidNC",
             "install-button": "安装 FluidNC"
         },
         "terminal": {
             "open-terminal": "打开终端",
-            "open-terminal-description": "打开一个串行终端到您的控制器"
+            "open-terminal-description": "打开到控制器的串行终端"
         },
         "file-browser": {
-            "open-browser": "内置文件",
+            "open-browser": "文件浏览器",
             "open-browser-description": "管理控制器上的文件"
         },
         "calibrate": {
-            "calibrate": "检查引脚",
+            "calibrate": "校准",
             "calibrate-description": "校准控制器上的设置"
         },
         "wifi": {
             "configure": "配置 WiFi",
-            "configure-description": "管理控制器WiFi设置",
-            "connected-to": "连接到",
-            "access-point": "接入点/无线 AP "
+            "configure-description": "管理控制器 WiFi 设置",
+            "connected-to": "已连接到",
+            "access-point": "接入点"
         },
         "stacktrace": {
-            "open": "Decode Stack Trace",
-            "description": "Decode ESP32 stack traces using .addrinfo files"
+            "open": "解码堆栈跟踪",
+            "description": "使用 .addrinfo 文件解码 ESP32 堆栈跟踪"
         },
         "donate": {
             "description": "请考虑通过以下链接向 FluidNC 项目捐款，以使其继续发展。"

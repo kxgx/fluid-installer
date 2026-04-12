@@ -40,7 +40,7 @@ const Footer = () => {
                 </li>
                 <li className="me-3">
                     <a
-                        href="https://github.com/bdring/FluidNC"
+                        href="https://github.com/kxgx/FluidNC"
                         target="_blank"
                         rel="noreferrer"
                     >
