@@ -7,6 +7,7 @@ import BooleanField from "../../../components/fields/BooleanField";
 import TextField from "../../../components/fields/TextField";
 import MotorDriverGroup from "./MotorDriverGroup";
 import CollapseSection from "../../../components/collapsesection/CollapseSection";
+import { useTranslation } from "react-i18next";
 
 type MotorProps = {
     config: Config;
@@ -33,6 +34,7 @@ const MotorGroup = ({
     setValue,
     usedPins
 }: MotorProps) => {
+    const { t } = useTranslation();
     return (
         <>
             <h5>
@@ -53,7 +55,7 @@ const MotorGroup = ({
 
             <CollapseSection show={!!motor}>
                 <PinField
-                    label="Limit negative pin"
+                    label={t("panel.configuration.motor-limit-negative-pin")}
                     board={board}
                     value={PinConfig.fromString(motor?.limit_neg_pin)}
                     setValue={(value) => {
@@ -66,7 +68,7 @@ const MotorGroup = ({
                     hideI2SO={true}
                 />
                 <PinField
-                    label="Limit positive pin"
+                    label={t("panel.configuration.motor-limit-positive-pin")}
                     board={board}
                     value={PinConfig.fromString(motor?.limit_pos_pin)}
                     setValue={(value) => {
@@ -79,7 +81,7 @@ const MotorGroup = ({
                     hideI2SO={true}
                 />
                 <PinField
-                    label="Limit all pin"
+                    label={t("panel.configuration.motor-limit-all-pin")}
                     board={board}
                     value={PinConfig.fromString(motor?.limit_all_pin)}
                     setValue={(value) => {
@@ -92,7 +94,7 @@ const MotorGroup = ({
                     hideI2SO={true}
                 />
                 <TextField
-                    label="Pull off"
+                    label={t("panel.configuration.motor-pull-off")}
                     value={motor?.pulloff_mm ?? 1}
                     unit="mm"
                     setValue={(value) => {
@@ -103,7 +105,7 @@ const MotorGroup = ({
                     }}
                 />
                 <BooleanField
-                    label="Hard limits"
+                    label={t("panel.configuration.motor-hard-limits")}
                     value={motor?.hard_limits ?? false}
                     setValue={(value) => {
                         setValue({
@@ -111,7 +113,7 @@ const MotorGroup = ({
                             ...{ hard_limits: value }
                         });
                     }}
-                    helpText="Enable this when you want to use the switches defined above as hard limits. Hard limits immediately stops all motion when the switch is activated. Position is considered lost and rehoming is required."
+                    helpText={t("panel.configuration.motor-hard-limits-help")}
                 />
                 <br />
                 <MotorDriverGroup

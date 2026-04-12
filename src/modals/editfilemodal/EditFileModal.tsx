@@ -2,6 +2,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faClose, faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Modal } from "react-bootstrap";
 import { ControllerFile } from "../../services";
 import { Button, Spinner } from "../../components";
@@ -20,6 +21,7 @@ const EditFileModal = ({
     onClose,
     onSave
 }: EditFileModalProps) => {
+    const { t } = useTranslation();
     const [value, setValue] = useState<string>(fileData?.toString() || "");
     const [isSaving, setIsSaving] = useState<boolean>(false);
 
@@ -32,14 +34,17 @@ const EditFileModal = ({
             onHide={onClose}
         >
             <Modal.Header closeButton>
-                <Modal.Title>Editing {file.name}</Modal.Title>
+                <Modal.Title>
+                    {t("page.file-browser.edit")} {file.name}
+                </Modal.Title>
             </Modal.Header>
             <Modal.Body style={{ padding: "0px" }}>
                 <Editor value={value} onChange={setValue} format="other" />
             </Modal.Body>
             <Modal.Footer>
                 <Button disabled={isSaving} onClick={onClose}>
-                    <FontAwesomeIcon icon={faClose as IconDefinition} /> Close
+                    <FontAwesomeIcon icon={faClose as IconDefinition} />{" "}
+                    {t("modal.installer.close")}
                 </Button>
                 <Button
                     disabled={isSaving}
@@ -60,7 +65,7 @@ const EditFileModal = ({
                         />
                     )}
                     {isSaving && <Spinner />}
-                    Save
+                    {t("page.file-browser.save")}
                 </Button>
             </Modal.Footer>
         </Modal>

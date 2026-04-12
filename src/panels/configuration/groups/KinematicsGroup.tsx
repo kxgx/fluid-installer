@@ -3,6 +3,7 @@ import { Config } from "../../../model/Config";
 import SelectField from "../../../components/fields/SelectField";
 import TextField from "../../../components/fields/TextField";
 import BooleanField from "../../../components/fields/BooleanField";
+import { useTranslation } from "react-i18next";
 
 type KinematicsGroupProps = {
     config?: Config;
@@ -13,11 +14,12 @@ const KinematicsGroup = ({
     config,
     setValue = () => {}
 }: KinematicsGroupProps) => {
+    const { t } = useTranslation();
     return (
         <>
-            <h4>Kinematics</h4>
+            <h4>{t("panel.configuration.kinematics")}</h4>
             <SelectField
-                label="Type"
+                label={t("panel.configuration.kinematics-type")}
                 value={
                     config?.kinematics
                         ? Object.keys(config.kinematics)[0]
@@ -63,13 +65,13 @@ const KinematicsGroup = ({
                         value: "WallPlotter"
                     }
                 ]}
-                helpText="Kinematics define how motors move the tool, choose the type that matches your machine"
+                helpText={t("panel.configuration.kinematics-help")}
             />
 
             {config?.kinematics?.WallPlotter && (
                 <>
                     <TextField
-                        label="Left axis"
+                        label={t("panel.configuration.kinematics-left-axis")}
                         value={config?.kinematics?.WallPlotter?.left_axis ?? 0}
                         setValue={(value) => {
                             config.kinematics.WallPlotter.left_axis = isNaN(
@@ -82,7 +84,9 @@ const KinematicsGroup = ({
                     />
 
                     <TextField
-                        label="Left anchor X"
+                        label={t(
+                            "panel.configuration.kinematics-left-anchor-x"
+                        )}
                         value={
                             config?.kinematics?.WallPlotter?.left_anchor_x ??
                             -100
@@ -96,7 +100,9 @@ const KinematicsGroup = ({
                     />
 
                     <TextField
-                        label="Left anchor Y"
+                        label={t(
+                            "panel.configuration.kinematics-left-anchor-y"
+                        )}
                         value={
                             config?.kinematics?.WallPlotter?.left_anchor_y ??
                             -100
@@ -111,7 +117,7 @@ const KinematicsGroup = ({
                     />
 
                     <TextField
-                        label="Right axis"
+                        label={t("panel.configuration.kinematics-right-axis")}
                         value={config?.kinematics?.WallPlotter?.right_axis ?? 1}
                         setValue={(value) => {
                             config.kinematics.WallPlotter.right_axis = isNaN(
@@ -124,7 +130,9 @@ const KinematicsGroup = ({
                     />
 
                     <TextField
-                        label="Right anchor X"
+                        label={t(
+                            "panel.configuration.kinematics-right-anchor-x"
+                        )}
                         value={
                             config?.kinematics?.WallPlotter?.right_anchor_x ??
                             100
@@ -138,7 +146,9 @@ const KinematicsGroup = ({
                     />
 
                     <TextField
-                        label="Right anchor Y"
+                        label={t(
+                            "panel.configuration.kinematics-right-anchor-y"
+                        )}
                         value={
                             config?.kinematics?.WallPlotter?.right_anchor_y ??
                             100
@@ -152,7 +162,9 @@ const KinematicsGroup = ({
                     />
 
                     <TextField
-                        label="Segment length"
+                        label={t(
+                            "panel.configuration.kinematics-segment-length"
+                        )}
                         value={
                             config?.kinematics?.WallPlotter?.segment_length ??
                             10
@@ -170,7 +182,7 @@ const KinematicsGroup = ({
             {config?.kinematics?.parallel_delta && (
                 <>
                     <TextField
-                        label="Crank"
+                        label={t("panel.configuration.kinematics-crank")}
                         value={
                             config?.kinematics?.parallel_delta?.crank_mm ?? 70
                         }
@@ -186,7 +198,9 @@ const KinematicsGroup = ({
                         unit="mm"
                     />
                     <TextField
-                        label="Base triangle"
+                        label={t(
+                            "panel.configuration.kinematics-base-triangle"
+                        )}
                         value={
                             config?.kinematics?.parallel_delta
                                 ?.base_triangle_mm ?? 179.437
@@ -200,7 +214,7 @@ const KinematicsGroup = ({
                         unit="mm"
                     />
                     <TextField
-                        label="Linkage"
+                        label={t("panel.configuration.kinematics-linkage")}
                         value={
                             config?.kinematics?.parallel_delta?.linkage_mm ??
                             133.5
@@ -217,7 +231,9 @@ const KinematicsGroup = ({
                         unit="mm"
                     />
                     <TextField
-                        label="End effector triangle"
+                        label={t(
+                            "panel.configuration.kinematics-end-effector-triangle"
+                        )}
                         value={
                             config?.kinematics?.parallel_delta
                                 ?.end_effector_triangle_mm ?? 86.603
@@ -231,7 +247,9 @@ const KinematicsGroup = ({
                         unit="mm"
                     />
                     <TextField
-                        label="Segment length"
+                        label={t(
+                            "panel.configuration.kinematics-segment-length"
+                        )}
                         value={
                             config?.kinematics?.parallel_delta
                                 ?.kinematic_segment_len_mm ?? 1
@@ -245,7 +263,7 @@ const KinematicsGroup = ({
                         unit="mm"
                     />
                     <TextField
-                        label="Homing Mpos"
+                        label={t("panel.configuration.kinematics-homing-mpos")}
                         value={
                             config?.kinematics?.parallel_delta
                                 ?.homing_mpos_radians ?? 0
@@ -259,7 +277,7 @@ const KinematicsGroup = ({
                         unit="radians"
                     />
                     <BooleanField
-                        label="Soft limits"
+                        label={t("panel.configuration.kinematics-soft-limits")}
                         value={
                             config?.kinematics?.parallel_delta?.soft_limits ??
                             false
@@ -272,7 +290,7 @@ const KinematicsGroup = ({
                         }}
                     />
                     <TextField
-                        label="Max Z"
+                        label={t("panel.configuration.kinematics-max-z")}
                         value={
                             config?.kinematics?.parallel_delta?.max_z_mm ?? 0
                         }
@@ -288,7 +306,7 @@ const KinematicsGroup = ({
                         unit="mm"
                     />
                     <BooleanField
-                        label="Use servos"
+                        label={t("panel.configuration.kinematics-use-servos")}
                         value={
                             config?.kinematics?.parallel_delta?.use_servos ??
                             true

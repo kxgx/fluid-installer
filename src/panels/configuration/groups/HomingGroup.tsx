@@ -4,6 +4,7 @@ import { Homing } from "../../../model/Config";
 import BooleanField from "../../../components/fields/BooleanField";
 import TextField from "../../../components/fields/TextField";
 import CollapseSection from "../../../components/collapsesection/CollapseSection";
+import { useTranslation } from "react-i18next";
 
 type HomingProps = {
     homing?: Homing;
@@ -11,6 +12,7 @@ type HomingProps = {
 };
 
 const HomingGroup = ({ homing, setValue }: HomingProps) => {
+    const { t } = useTranslation();
     return (
         <>
             <h5>
@@ -33,7 +35,7 @@ const HomingGroup = ({ homing, setValue }: HomingProps) => {
 
             <CollapseSection show={!!homing}>
                 <TextField
-                    label="Cycle"
+                    label={t("panel.configuration.homing-cycle")}
                     value={Number(homing?.cycle ?? -1)}
                     setValue={(value) => {
                         setValue({
@@ -43,7 +45,7 @@ const HomingGroup = ({ homing, setValue }: HomingProps) => {
                     }}
                 />
                 <TextField
-                    label="Position"
+                    label={t("panel.configuration.homing-position")}
                     value={Number(homing?.mpos_mm ?? 0)}
                     setValue={(value) => {
                         setValue({
@@ -52,10 +54,10 @@ const HomingGroup = ({ homing, setValue }: HomingProps) => {
                         });
                     }}
                     unit="mm"
-                    helpText="Sets the machine position after homing and limit switch pull-off in millimeters. If you want the machine position to be zero at the limit switch, set this to zero. Keep in mind the homing direction when you choose this number."
+                    helpText={t("panel.configuration.homing-position-help")}
                 />
                 <BooleanField
-                    label="Positive direction"
+                    label={t("panel.configuration.homing-positive-direction")}
                     value={homing?.positive_direction ?? true}
                     setValue={(value) => {
                         setValue({
@@ -63,7 +65,9 @@ const HomingGroup = ({ homing, setValue }: HomingProps) => {
                             ...{ positive_direction: Boolean(value) }
                         });
                     }}
-                    helpText="Controls the direction in which the axis moves when homing."
+                    helpText={t(
+                        "panel.configuration.homing-positive-direction-help"
+                    )}
                 />
             </CollapseSection>
         </>

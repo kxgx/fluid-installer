@@ -4,6 +4,7 @@ import { OLEDConfig } from "../../../model/Config";
 import { Board } from "../../../model/Boards";
 import TextField from "../../../components/fields/TextField";
 import CollapseSection from "../../../components/collapsesection/CollapseSection";
+import { useTranslation } from "react-i18next";
 
 type OLEDProps = {
     board: Board;
@@ -12,10 +13,11 @@ type OLEDProps = {
 };
 
 const OLEDGroup = ({ oled, setValue }: OLEDProps) => {
+    const { t } = useTranslation();
     return (
         <div style={{ marginBottom: "48px" }}>
             <h4>
-                OLED
+                {t("panel.configuration.oled")}
                 <Form.Check
                     type="switch"
                     style={{ display: "inline", marginLeft: "16px" }}
@@ -38,7 +40,7 @@ const OLEDGroup = ({ oled, setValue }: OLEDProps) => {
 
             <CollapseSection show={!!oled}>
                 <TextField
-                    label="Address"
+                    label={t("panel.configuration.oled-address")}
                     value={oled?.i2c_address}
                     setValue={(value) => {
                         setValue({
@@ -48,7 +50,7 @@ const OLEDGroup = ({ oled, setValue }: OLEDProps) => {
                     }}
                 />
                 <TextField
-                    label="Width"
+                    label={t("panel.configuration.oled-width")}
                     value={oled?.width}
                     unit="px"
                     setValue={(value) => {
@@ -59,7 +61,7 @@ const OLEDGroup = ({ oled, setValue }: OLEDProps) => {
                     }}
                 />
                 <TextField
-                    label="Height"
+                    label={t("panel.configuration.oled-height")}
                     value={oled?.height}
                     unit="px"
                     setValue={(value) => {
@@ -70,7 +72,7 @@ const OLEDGroup = ({ oled, setValue }: OLEDProps) => {
                     }}
                 />
                 <TextField
-                    label="Radio delay"
+                    label={t("panel.configuration.oled-radio-delay")}
                     value={oled?.radio_delay_ms}
                     unit="ms"
                     setValue={(value) => {

@@ -4,6 +4,7 @@ import { PinConfig, I2C0Config, Pin } from "../../../model/Config";
 import PinField from "../../../components/fields/PinField";
 import { Board } from "../../../model/Boards";
 import CollapseSection from "../../../components/collapsesection/CollapseSection";
+import { useTranslation } from "react-i18next";
 
 type I2C0Props = {
     board: Board;
@@ -13,10 +14,11 @@ type I2C0Props = {
 };
 
 const I2C0Group = ({ board, i2c, setValue, usedPins }: I2C0Props) => {
+    const { t } = useTranslation();
     return (
         <div style={{ marginBottom: "48px" }}>
             <h4>
-                I2C
+                {t("panel.configuration.i2c")}
                 <Form.Check
                     type="switch"
                     style={{ display: "inline", marginLeft: "16px" }}
@@ -36,7 +38,7 @@ const I2C0Group = ({ board, i2c, setValue, usedPins }: I2C0Props) => {
 
             <CollapseSection show={!!i2c}>
                 <PinField
-                    label="SDA Pin"
+                    label={t("panel.configuration.i2c-sda-pin")}
                     board={board}
                     value={PinConfig.fromString(i2c?.sda_pin)}
                     setValue={(value) => {
@@ -48,7 +50,7 @@ const I2C0Group = ({ board, i2c, setValue, usedPins }: I2C0Props) => {
                     usedPins={usedPins}
                 />
                 <PinField
-                    label="SCL Pin"
+                    label={t("panel.configuration.i2c-scl-pin")}
                     board={board}
                     value={PinConfig.fromString(i2c?.scl_pin)}
                     setValue={(value) => {

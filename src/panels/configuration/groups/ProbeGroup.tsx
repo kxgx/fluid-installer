@@ -5,6 +5,7 @@ import { Board } from "../../../model/Boards";
 import PinField from "../../../components/fields/PinField";
 import BooleanField from "../../../components/fields/BooleanField";
 import CollapseSection from "../../../components/collapsesection/CollapseSection";
+import { useTranslation } from "react-i18next";
 
 type ProbeProps = {
     board: Board;
@@ -14,10 +15,11 @@ type ProbeProps = {
 };
 
 const ProbeGroup = ({ probe, setValue, board, usedPins }: ProbeProps) => {
+    const { t } = useTranslation();
     return (
         <div style={{ marginBottom: "48px" }}>
             <h4>
-                Probe
+                {t("panel.configuration.probe")}
                 <Form.Check
                     type="switch"
                     style={{ display: "inline", marginLeft: "16px" }}
@@ -40,7 +42,7 @@ const ProbeGroup = ({ probe, setValue, board, usedPins }: ProbeProps) => {
             <CollapseSection show={!!probe}>
                 <PinField
                     board={board}
-                    label="Probe pin"
+                    label={t("panel.configuration.probe-pin")}
                     value={PinConfig.fromString(probe?.pin)}
                     setValue={(value) => {
                         setValue({
@@ -52,7 +54,7 @@ const ProbeGroup = ({ probe, setValue, board, usedPins }: ProbeProps) => {
                 />
                 <PinField
                     board={board}
-                    label="Tool setter pin"
+                    label={t("panel.configuration.probe-tool-setter-pin")}
                     value={PinConfig.fromString(probe?.toolsetter_pin)}
                     setValue={(value) => {
                         setValue({
@@ -60,11 +62,13 @@ const ProbeGroup = ({ probe, setValue, board, usedPins }: ProbeProps) => {
                             ...{ toolsetter_pin: value.toString() }
                         });
                     }}
-                    helpText="This is an optional second probe"
+                    helpText={t(
+                        "panel.configuration.probe-tool-setter-pin-help"
+                    )}
                     usedPins={usedPins}
                 />
                 <BooleanField
-                    label="Check mode start"
+                    label={t("panel.configuration.probe-check-mode-start")}
                     value={probe?.check_mode_start}
                     setValue={(value) => {
                         setValue({
@@ -72,10 +76,12 @@ const ProbeGroup = ({ probe, setValue, board, usedPins }: ProbeProps) => {
                             ...{ check_mode_start: Boolean(value) }
                         });
                     }}
-                    helpText="This will force a probe check before a probe is started"
+                    helpText={t(
+                        "panel.configuration.probe-check-mode-start-help"
+                    )}
                 />
                 <BooleanField
-                    label="Hard stop"
+                    label={t("panel.configuration.probe-hard-stop")}
                     value={probe?.hard_stop}
                     setValue={(value) => {
                         setValue({
@@ -83,7 +89,7 @@ const ProbeGroup = ({ probe, setValue, board, usedPins }: ProbeProps) => {
                             ...{ hard_stop: Boolean(value) }
                         });
                     }}
-                    helpText="If true the axis will do an hard stop rather than decelerate. This can be used with fragile bits that might break with the overtravel needed for decelration. It is likely to be less accurate at higher speeds where the motor might skip a few steps without decelaration."
+                    helpText={t("panel.configuration.probe-hard-stop-help")}
                 />
             </CollapseSection>
         </div>

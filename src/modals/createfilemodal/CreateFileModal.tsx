@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
     Col,
     Form,
@@ -34,6 +35,7 @@ const CreateFileModal = ({
     onCancel,
     onCreate
 }: Props) => {
+    const { t } = useTranslation();
     const [filename, setFileName] = useState(defaultFilename);
     const [boards, setBoards] = useState<ConfigBoard[]>([]);
     const [createFromTemplate, setCreateFromTemplate] = useState(false);
@@ -84,15 +86,17 @@ const CreateFileModal = ({
 
     return (
         <Modal show={show} size="xl" scrollable={true} centered={false}>
-            <ModalHeader>Create new config file</ModalHeader>
+            <ModalHeader>
+                {t("page.file-browser.create-new-config")}
+            </ModalHeader>
             <ModalBody>
                 <Row>
                     <Col sm="6">
-                        <Form.Label>Filename</Form.Label>
+                        <Form.Label>{t("page.file-browser.upload")}</Form.Label>
                         <InputGroup hasValidation>
                             <Form.Control
                                 type={"text"}
-                                placeholder={"Filename"}
+                                placeholder={"config.yaml"}
                                 value={filename}
                                 onChange={(event) =>
                                     setFileName(event.target.value)
@@ -109,7 +113,7 @@ const CreateFileModal = ({
                                 <InputGroup style={{ marginTop: "20px" }}>
                                     <Form.Check
                                         type="switch"
-                                        label="Create from template"
+                                        label="从模板创建"
                                         onChange={(event) =>
                                             setCreateFromTemplate(
                                                 event.target.checked
@@ -136,7 +140,7 @@ const CreateFileModal = ({
                                                 target="_blank"
                                                 rel="noreferrer"
                                             >
-                                                github page
+                                                GitHub 页面
                                             </a>
                                             .
                                         </p>
@@ -151,7 +155,7 @@ const CreateFileModal = ({
                                         <Form.Label
                                             style={{ marginTop: "20px" }}
                                         >
-                                            Board
+                                            主板
                                         </Form.Label>
                                         <Form.Select
                                             onChange={(event) => {
@@ -183,7 +187,7 @@ const CreateFileModal = ({
                                         <Form.Label
                                             style={{ marginTop: "20px" }}
                                         >
-                                            Config template
+                                            配置模板
                                         </Form.Label>
                                         <Form.Select
                                             onChange={(event) =>
@@ -224,7 +228,7 @@ const CreateFileModal = ({
                                         <p>{config?.meta?.toString()}</p>
                                         {configError && (
                                             <AlertMessage>
-                                                The config seems invalid...
+                                                配置文件似乎无效...
                                             </AlertMessage>
                                         )}
                                     </Col>
@@ -247,12 +251,14 @@ const CreateFileModal = ({
                 )}
             </ModalBody>
             <ModalFooter>
-                <Button onClick={onCancel}>Cancel</Button>
+                <Button onClick={onCancel}>
+                    {t("modal.installer.cancel")}
+                </Button>
                 <Button
                     buttonType="btn-success"
                     onClick={() => onCreate(filename, content)}
                 >
-                    OK
+                    {t("modal.installer.continue")}
                 </Button>
             </ModalFooter>
         </Modal>

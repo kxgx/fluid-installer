@@ -11,6 +11,7 @@ import PinField from "../../../components/fields/PinField";
 import BooleanField from "../../../components/fields/BooleanField";
 import SteppingGroup from "./SteppingGroup";
 import SelectField from "../../../components/fields/SelectField";
+import { useTranslation } from "react-i18next";
 
 type AxisGroupProps = {
     board: Board;
@@ -25,11 +26,12 @@ const AxesGroup = ({
     setValue = () => {},
     usedPins
 }: AxisGroupProps) => {
+    const { t } = useTranslation();
     return (
         <>
-            <h4>Axes</h4>
+            <h4>{t("panel.configuration.axes")}</h4>
             <BooleanField
-                label="Require homing on startup"
+                label={t("panel.configuration.axes-require-homing")}
                 value={config?.start?.must_home ?? true}
                 setValue={(value) =>
                     setValue({
@@ -40,11 +42,11 @@ const AxesGroup = ({
                         }
                     })
                 }
-                helpText="This controls whether you are required to home at startup or not. You will get an homing alarm at startup if this value is true. This prevents motion until you home the machine or clear the alarm."
+                helpText={t("panel.configuration.axes-require-homing-help")}
             />
 
             <SelectField
-                label="Homing runs"
+                label={t("panel.configuration.axes-homing-runs")}
                 value={
                     config?.axes?.homing_runs
                         ? config?.axes?.homing_runs + ""
@@ -81,11 +83,11 @@ const AxesGroup = ({
                         value: "5"
                     }
                 ]}
-                helpText="This sets the number of touches during the homing sequence. The default is 2 to match the GRBL style."
+                helpText={t("panel.configuration.axes-homing-runs-help")}
             />
 
             <BooleanField
-                label="Deactivate parking"
+                label={t("panel.configuration.axes-deactivate-parking")}
                 value={config?.start?.deactivate_parking ?? true}
                 setValue={(value) =>
                     setValue({
@@ -99,7 +101,7 @@ const AxesGroup = ({
             />
 
             <BooleanField
-                label="Check limits"
+                label={t("panel.configuration.axes-check-limits")}
                 value={config?.start?.check_limits ?? false}
                 setValue={(value) =>
                     setValue({
@@ -110,13 +112,13 @@ const AxesGroup = ({
                         }
                     })
                 }
-                helpText="If true this will report if any limit switches are active at startup if hard_limits is true for the axis."
+                helpText={t("panel.configuration.axes-check-limits-help")}
             />
 
             <br />
             <Form.Check
                 type="switch"
-                label="Use shared pins"
+                label={t("panel.configuration.axes-use-shared-pins")}
                 checked={
                     !!config?.axes?.shared_stepper_disable_pin ||
                     !!config?.axes?.shared_stepper_reset_pin
@@ -154,7 +156,7 @@ const AxesGroup = ({
 
             {!!config?.axes?.shared_stepper_disable_pin && (
                 <PinField
-                    label="Shared disable pin"
+                    label={t("panel.configuration.axes-shared-disable-pin")}
                     board={board}
                     value={PinConfig.fromString(
                         config?.axes?.shared_stepper_disable_pin
@@ -173,7 +175,7 @@ const AxesGroup = ({
             )}
             {!!config?.axes?.shared_stepper_reset_pin && (
                 <PinField
-                    label="Shared reset pin"
+                    label={t("panel.configuration.axes-shared-reset-pin")}
                     board={board}
                     value={PinConfig.fromString(
                         config?.axes?.shared_stepper_reset_pin

@@ -19,6 +19,7 @@ import "./Configuration.scss";
 import TextAreaField from "../../components/fields/TextAreaField";
 import UARTGroup from "./groups/UARTGroup";
 import KinematicsGroup from "./groups/KinematicsGroup";
+import { useTranslation } from "react-i18next";
 
 const DEFAULT_CONFIG: Config = {};
 
@@ -42,6 +43,7 @@ const Configuration = ({
     value,
     onChange
 }: ConfigurationProps) => {
+    const { t } = useTranslation();
     const [config, setConfig] = useState<Config>(DEFAULT_CONFIG);
     const [usedPins, setUsedPins] = useState<Map<string, PinConfig>>(new Map());
 
@@ -80,16 +82,16 @@ const Configuration = ({
         <div className="configuration-panel">
             {currentTab === ConfigurationTab.GENERAL && (
                 <Container>
-                    <h4>Board information</h4>
+                    <h4>{t("panel.configuration.board-information")}</h4>
                     <TextField
-                        label="Name"
-                        placeholder="A descriptive name of the configuration"
+                        label={t("panel.configuration.name")}
+                        placeholder={t("panel.configuration.name-placeholder")}
                         value={config.name}
                         setValue={(value) => appendConfig({ name: value })}
                         maxLength={80}
                     />
                     <SelectField
-                        label="Board"
+                        label={t("panel.configuration.board")}
                         value={config.board ?? "None"}
                         options={[
                             { name: "None", value: "None" },
@@ -98,7 +100,7 @@ const Configuration = ({
                         setValue={(value) => appendConfig({ board: value })}
                     />
                     <TextAreaField
-                        label="Meta"
+                        label={t("panel.configuration.meta")}
                         value={(config.meta ?? "").replaceAll("<br/>", "\n")}
                         setValue={(value) =>
                             appendConfig({

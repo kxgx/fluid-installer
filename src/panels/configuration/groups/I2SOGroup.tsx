@@ -4,6 +4,7 @@ import { PinConfig, I2ISO as I2ISOConfig, Pin } from "../../../model/Config";
 import PinField from "../../../components/fields/PinField";
 import { Board } from "../../../model/Boards";
 import CollapseSection from "../../../components/collapsesection/CollapseSection";
+import { useTranslation } from "react-i18next";
 
 type SPIProps = {
     board: Board;
@@ -13,10 +14,11 @@ type SPIProps = {
 };
 
 const I2SOGroup = ({ board, i2so, setValue, usedPins }: SPIProps) => {
+    const { t } = useTranslation();
     return (
         <div style={{ marginBottom: "48px" }}>
             <h4>
-                I2SO
+                {t("panel.configuration.i2so")}
                 <Form.Check
                     type="switch"
                     style={{ display: "inline", marginLeft: "16px" }}
@@ -37,7 +39,7 @@ const I2SOGroup = ({ board, i2so, setValue, usedPins }: SPIProps) => {
 
             <CollapseSection show={!!i2so}>
                 <PinField
-                    label="Bck Pin"
+                    label={t("panel.configuration.i2so-bck-pin")}
                     board={board}
                     value={PinConfig.fromString(i2so?.bck_pin)}
                     setValue={(value) => {
@@ -49,7 +51,7 @@ const I2SOGroup = ({ board, i2so, setValue, usedPins }: SPIProps) => {
                     usedPins={usedPins}
                 />
                 <PinField
-                    label="Data Pin"
+                    label={t("panel.configuration.i2so-data-pin")}
                     board={board}
                     value={PinConfig.fromString(i2so?.data_pin)}
                     setValue={(value) => {
@@ -61,7 +63,7 @@ const I2SOGroup = ({ board, i2so, setValue, usedPins }: SPIProps) => {
                     usedPins={usedPins}
                 />
                 <PinField
-                    label="WS Pin"
+                    label={t("panel.configuration.i2so-ws-pin")}
                     board={board}
                     value={PinConfig.fromString(i2so?.ws_pin)}
                     setValue={(value) => {

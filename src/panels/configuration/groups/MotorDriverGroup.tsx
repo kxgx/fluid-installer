@@ -12,6 +12,7 @@ import RCServo from "../motordriver/RCServo";
 import Solenoid from "../motordriver/Solenoid";
 import Dynamixel2 from "../motordriver/Dynamixel2";
 import { deepMerge } from "../../../utils/utils";
+import { useTranslation } from "react-i18next";
 
 type MotorDriverProps = {
     config: Config;
@@ -42,6 +43,7 @@ const MotorDriverGroup = ({
     setValue,
     usedPins
 }: MotorDriverProps) => {
+    const { t } = useTranslation();
     const [driverType, setDriverType] = useState<string>();
 
     useEffect(() => {
@@ -118,48 +120,50 @@ const MotorDriverGroup = ({
     return (
         <>
             <SelectField
-                label="Driver"
+                label={t("panel.configuration.motor-driver")}
                 setValue={setDriverType}
                 value={driverType}
                 options={[
                     {
-                        name: "None",
+                        name: t("panel.configuration.motor-driver-none"),
                         value: DriverType.NONE
                     },
                     {
-                        name: "Standard stepper",
+                        name: t(
+                            "panel.configuration.motor-driver-standard-stepper"
+                        ),
                         value: DriverType.STANDARD_STEPPER
                     },
                     {
-                        name: "Stepstick",
+                        name: t("panel.configuration.motor-driver-stepstick"),
                         value: DriverType.STEPSTICK
                     },
                     {
-                        name: "TMC 2130",
+                        name: t("panel.configuration.motor-driver-tmc-2130"),
                         value: DriverType.TMC_2130
                     },
                     {
-                        name: "TMC 2208",
+                        name: t("panel.configuration.motor-driver-tmc-2208"),
                         value: DriverType.TMC_2208
                     },
                     {
-                        name: "TMC 2209",
+                        name: t("panel.configuration.motor-driver-tmc-2209"),
                         value: DriverType.TMC_2209
                     },
                     {
-                        name: "TMC 5160",
+                        name: t("panel.configuration.motor-driver-tmc-5160"),
                         value: DriverType.TMC_5160
                     },
                     {
-                        name: "RC Servo",
+                        name: t("panel.configuration.motor-driver-rc-servo"),
                         value: DriverType.RC_SERVO
                     },
                     {
-                        name: "Solenoid",
+                        name: t("panel.configuration.motor-driver-solenoid"),
                         value: DriverType.SOLENOID
                     },
                     {
-                        name: "Dynamixel2",
+                        name: t("panel.configuration.motor-driver-dynamixel2"),
                         value: DriverType.DYNAMIXEL2
                     }
                 ]}

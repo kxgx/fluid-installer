@@ -6,6 +6,7 @@ import { Board } from "../../../model/Boards";
 import CollapseSection from "../../../components/collapsesection/CollapseSection";
 import TextField from "../../../components/fields/TextField";
 import SelectField from "../../../components/fields/SelectField";
+import { useTranslation } from "react-i18next";
 
 type SPIProps = {
     board: Board;
@@ -16,6 +17,7 @@ type SPIProps = {
 };
 
 const UARTGroup = ({ board, uart, uartName, setValue, usedPins }: SPIProps) => {
+    const { t } = useTranslation();
     return (
         <div style={{ marginBottom: "48px" }}>
             <h4>
@@ -44,7 +46,7 @@ const UARTGroup = ({ board, uart, uartName, setValue, usedPins }: SPIProps) => {
 
             <CollapseSection show={!!uart}>
                 <PinField
-                    label="TXD Pin"
+                    label={t("panel.configuration.uart-txd-pin")}
                     board={board}
                     value={PinConfig.fromString(uart?.txd_pin)}
                     setValue={(value) => {
@@ -56,7 +58,7 @@ const UARTGroup = ({ board, uart, uartName, setValue, usedPins }: SPIProps) => {
                     usedPins={usedPins}
                 />
                 <PinField
-                    label="RXD Pin"
+                    label={t("panel.configuration.uart-rxd-pin")}
                     board={board}
                     value={PinConfig.fromString(uart?.rxd_pin)}
                     setValue={(value) => {
@@ -68,7 +70,7 @@ const UARTGroup = ({ board, uart, uartName, setValue, usedPins }: SPIProps) => {
                     usedPins={usedPins}
                 />
                 <PinField
-                    label="RTS Pin"
+                    label={t("panel.configuration.uart-rts-pin")}
                     board={board}
                     value={PinConfig.fromString(uart?.rts_pin)}
                     setValue={(value) => {
@@ -81,7 +83,7 @@ const UARTGroup = ({ board, uart, uartName, setValue, usedPins }: SPIProps) => {
                 />
 
                 <SelectField
-                    label="Baud"
+                    label={t("panel.configuration.uart-baud")}
                     value={uart?.baud + ""}
                     setValue={(value) => {
                         setValue({
@@ -110,7 +112,7 @@ const UARTGroup = ({ board, uart, uartName, setValue, usedPins }: SPIProps) => {
                 />
 
                 <TextField
-                    label="Mode"
+                    label={t("panel.configuration.uart-mode")}
                     value={uart?.mode}
                     setValue={(value) => {
                         setValue({
@@ -121,7 +123,7 @@ const UARTGroup = ({ board, uart, uartName, setValue, usedPins }: SPIProps) => {
                 />
 
                 <SelectField
-                    label="Passthrough Baud"
+                    label={t("panel.configuration.uart-passthrough-baud")}
                     value={
                         uart?.passthrough_baud
                             ? uart?.passthrough_baud + ""
@@ -161,7 +163,7 @@ const UARTGroup = ({ board, uart, uartName, setValue, usedPins }: SPIProps) => {
                     ]}
                 />
                 <TextField
-                    label="Passthrough Mode"
+                    label={t("panel.configuration.uart-passthrough-mode")}
                     value={
                         uart?.passthrough_mode ? uart?.passthrough_mode : "8E1"
                     }

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { ConfigurationTab } from "./Configuration";
+import { useTranslation } from "react-i18next";
 
 type ConfigurationTabsProps = {
     hasErrors?: boolean;
@@ -18,6 +19,7 @@ const ConfigurationTabs = ({
     onChange,
     style
 }: ConfigurationTabsProps) => {
+    const { t } = useTranslation();
     return (
         <Nav fill variant="tabs" style={style}>
             <Nav.Item>
@@ -27,7 +29,7 @@ const ConfigurationTabs = ({
                     active={currentTab === ConfigurationTab.GENERAL}
                     onClick={() => onChange(ConfigurationTab.GENERAL)}
                 >
-                    General{" "}
+                    {t("panel.configuration.tab-general")}{" "}
                     {hasErrors && (
                         <FontAwesomeIcon
                             color="#ffe69c"
@@ -43,7 +45,7 @@ const ConfigurationTabs = ({
                     active={currentTab === ConfigurationTab.AXES}
                     onClick={() => onChange(ConfigurationTab.AXES)}
                 >
-                    Axes{" "}
+                    {t("panel.configuration.tab-axes")}{" "}
                     {hasErrors && (
                         <FontAwesomeIcon
                             color="#ffe69c"
@@ -60,7 +62,7 @@ const ConfigurationTabs = ({
                     onClick={() => onChange(ConfigurationTab.IO)}
                 >
                     {" "}
-                    IO{" "}
+                    {t("panel.configuration.tab-io")}{" "}
                     {hasErrors && (
                         <FontAwesomeIcon
                             color="#ffe69c"
@@ -76,7 +78,7 @@ const ConfigurationTabs = ({
                     active={currentTab === ConfigurationTab.SPINDLE}
                     onClick={() => onChange(ConfigurationTab.SPINDLE)}
                 >
-                    Spindle{" "}
+                    {t("panel.configuration.tab-spindle")}{" "}
                     {hasErrors && (
                         <FontAwesomeIcon
                             color="#ffe69c"
@@ -91,7 +93,7 @@ const ConfigurationTabs = ({
                     active={currentTab === ConfigurationTab.SOURCE}
                     onClick={() => onChange(ConfigurationTab.SOURCE)}
                 >
-                    Source
+                    {t("panel.configuration.tab-source")}
                 </Nav.Link>
             </Nav.Item>
         </Nav>
