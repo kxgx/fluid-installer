@@ -22,7 +22,7 @@
         "type": "git",
         "url": "git+https://github.com/kxgx/fluid-installer.git"
     },
-    "author": "Joacim kxgx",
+    "author": "kxgx",
     "license": "GPL-3.0",
     "bugs": {
         "url": "https://github.com/kxgx/fluid-installer/issues"
