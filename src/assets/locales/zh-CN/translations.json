@@ -166,7 +166,7 @@
             "access-point": "接入点/无线 AP "
         },
         "stacktrace": {
-            "open": "Decode Stack Trace",
+            "open": "堆栈跟踪解码",
             "description": "使用 .addrinfo 文件解码 ESP32 堆栈跟踪"
         },
         "donate": {
